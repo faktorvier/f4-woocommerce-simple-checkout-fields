@@ -60,4 +60,16 @@ spl_autoload_register(function($class) {
 // Init core
 F4\WCSCF\Core\Hooks::init();
 
+add_action('init', function() {
+	F4\WCSCF\Core\Helpers::register_field(array(
+		'target' => array('billing', 'shipping', 'order'),
+		'name' => 'testi',
+		'type' => 'text',
+		'label' => 'Testi Label',
+		'position' => 'last',
+		'show_in_formatted_address' => true,
+		//'position_before' => 'city',
+	));
+});
+
 ?>
