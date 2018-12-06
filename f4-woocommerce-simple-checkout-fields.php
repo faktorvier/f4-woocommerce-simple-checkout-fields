@@ -62,13 +62,19 @@ F4\WCSCF\Core\Hooks::init();
 
 add_action('init', function() {
 	F4\WCSCF\Core\Helpers::register_field(array(
-		'target' => array('billing', 'shipping', 'order'),
+		'target' => array('billing', 'shipping'),
 		'name' => 'testi',
-		'type' => 'text',
+		'type' => 'select',
 		'label' => 'Testi Label',
-		'position' => 'last',
-		'show_in_formatted_address' => true,
-		//'position_before' => 'city',
+		'options' => array(
+			'val1' => 'Label1',
+			'val2' => 'Label2',
+			'val3' => 'Label3',
+		),
+		//'position' => 'last',
+		'position' => array(
+			'after' => 'city'
+		),
 	));
 });
 
