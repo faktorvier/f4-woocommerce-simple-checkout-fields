@@ -32,7 +32,7 @@ along with this plugin. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 if(!defined('ABSPATH')) exit; // don't access directly
 
 define('F4_WCSCF_VERSION', '1.0.0');
-define('F4_WCSCF_PRO', true);
+define('F4_WCSCF_PRO', false);
 
 define('F4_WCSCF_SLUG', 'f4-woocommerce-simple-checkout-fields');
 define('F4_WCSCF_MAIN_FILE', __FILE__);
