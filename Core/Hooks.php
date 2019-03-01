@@ -93,7 +93,7 @@ class Hooks {
 		));
 
 		foreach($registered_variations as $field_slug => $field) {
-			$order_fields[$field['target']][$field_slug] = apply_filters(
+			$field_config = apply_filters(
 				'F4/WCSCF/order_field_args',
 				wp_parse_args(
 					$field['order_field_config'],
@@ -113,6 +113,10 @@ class Hooks {
 				$field['target'],
 				$field
 			);
+
+			if($field_config) {
+				$order_fields[$field['target']][$field_slug] = $field_config;
+			}
 		}
 
 		return $order_fields;
@@ -132,7 +136,7 @@ class Hooks {
 		));
 
 		foreach($registered_variations as $field_slug => $field) {
-			$address_fields[$field_slug] = apply_filters(
+			$field_config = apply_filters(
 				'F4/WCSCF/address_field_args',
 				wp_parse_args(
 					$field['address_field_config'],
@@ -153,6 +157,10 @@ class Hooks {
 				$field,
 				$country
 			);
+
+			if($field_config) {
+				$address_fields[$field_slug] = $field_config;
+			}
 		}
 
 		return $address_fields;
@@ -172,10 +180,26 @@ class Hooks {
 		));
 
 		foreach($registered_variations as $field_slug => $field) {
-			$address[$field['name']] = Helpers::maybe_get_registered_field_option_label(
+			$field_value = apply_filters(
+				'F4/WCSCF/formatted_customer_address_field_value',
+				Helpers::maybe_get_registered_field_option_label(
+					$field,
+					get_user_meta($customer_id, $field_slug, true)
+				),
+				$customer_id,
+				$field['name'],
+				$field['target'],
 				$field,
-				get_user_meta($customer_id, $field_slug, true)
+				$address
 			);
+
+			if($field_value) {
+				$address[$field['name']] = $field_value;
+
+				if($field['show_formatted_address_label']) {
+					$address[$field['name']] = $field['label'] . ': ' . $address[$field['name']];
+				}
+			}
 		}
 
 		return $address;
@@ -195,10 +219,26 @@ class Hooks {
 		));
 
 		foreach($registered_variations as $field_slug => $field) {
-			$address[$field['name']] = Helpers::maybe_get_registered_field_option_label(
+			$field_value = apply_filters(
+				'F4/WCSCF/formatted_order_address_field_value',
+				Helpers::maybe_get_registered_field_option_label(
+					$field,
+					get_post_meta($order->get_id(), '_' . $field_slug, true)
+				),
+				$order,
+				$field['name'],
+				$field['target'],
 				$field,
-				get_post_meta($order->get_id(), '_' . $field_slug, true)
+				$address
 			);
+
+			if($field_value) {
+				$address[$field['name']] = $field_value;
+
+				if($field['show_formatted_address_label']) {
+					$address[$field['name']] = $field['label'] . ': ' . $address[$field['name']];
+				}
+			}
 		}
 
 		return $address;

@@ -277,6 +277,7 @@ class Helpers {
 			'formatted_address_delimiter' => "\n",
 
 			'show_after_formatted_admin_order_address' => false,
+			'show_formatted_address_label' => false,
 			'show_in_address_form' => true,
 			'show_in_order_form' => true,
 			'show_in_formatted_address' => true,
