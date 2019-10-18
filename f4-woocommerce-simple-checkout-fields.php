@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: F4 WooCommerce Simple Checkout Fields
+Plugin Name: F4 Simple Checkout Fields for WooCommerce
 Plugin URI: https://github.com/faktorvier/f4-woocommerce-simple-checkout-fields
 Description: Adds custom fields to the WooCommerce checkout and billing/shipping address.
 Version: 1.0.0

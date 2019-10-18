@@ -1,6 +1,6 @@
-[=== F4 WooCommerce Simple Checkout Fields ===
+[=== F4 Simple Checkout Fields for WooCommerce ===
 Contributors: faktorvier
-Donate link: https://www.faktorvier.ch/
+Donate link: https://www.faktorvier.ch/donate/
 Tags: woocommerce, checkout, fields, shop, ecommerce, order, field, text, textarea, password, select
 Requires at least: 4.4.0
 Tested up to: 5.1
@@ -13,7 +13,7 @@ Adds custom fields to the WooCommerce checkout.
 
 == Description ==
 
-With F4 WooCommerce Simple Checkout Fields you can simply add new fields to the WooCommerce checkout. There is no UI to manage the fields,
+With F4 Simple Checkout Fields for WooCommerce you can simply add new fields to the WooCommerce checkout. There is no UI to manage the fields,
 they only can be added with a simple PHP method. That ensures that the plugin is lightweight and easy to handle, even though you need simple
 PHP knowledge and access to the file system to add the code (preferred your WordPress theme).
 
