@@ -57,14 +57,13 @@ class Hooks {
 
 		// Privacy
 		add_filter('woocommerce_privacy_export_customer_personal_data_props', __NAMESPACE__ . '\\Hooks::privacy_customer_personal_data_props', 10, 2);
-		add_filter('woocommerce_privacy_erase_customer_personal_data_props', __NAMESPACE__ . '\\Hooks::privacy_customer_personal_data_props', 10, 2);
 		add_filter('woocommerce_privacy_export_customer_personal_data_prop_value', __NAMESPACE__ . '\\Hooks::privacy_export_customer_personal_data_prop_value', 10, 3);
-		add_filter('woocommerce_privacy_erase_customer_personal_data_prop', __NAMESPACE__ . '\\Hooks::privacy_erase_customer_personal_data_prop', 10, 3);
-
-		add_filter('woocommerce_privacy_remove_order_personal_data_props', __NAMESPACE__ . '\\Hooks::privacy_order_personal_data_props', 10, 2);
 		add_filter('woocommerce_privacy_export_order_personal_data_props', __NAMESPACE__ . '\\Hooks::privacy_order_personal_data_props', 10, 2);
 		add_filter('woocommerce_privacy_export_order_personal_data_prop', __NAMESPACE__ . '\\Hooks::privacy_export_order_personal_data_prop', 10, 3);
-		add_action('woocommerce_privacy_remove_order_personal_data', __NAMESPACE__ . '\\Hooks::privacy_remove_order_personal_data', 10);
+
+		add_filter('woocommerce_privacy_erase_customer_personal_data_props', __NAMESPACE__ . '\\Hooks::privacy_customer_personal_data_props', 10, 2);
+		add_filter('woocommerce_privacy_erase_customer_personal_data_prop', __NAMESPACE__ . '\\Hooks::privacy_erase_customer_personal_data_prop', 10, 3);
+		add_action('woocommerce_privacy_remove_order_personal_data_meta', __NAMESPACE__ . '\\Hooks::privacy_remove_order_personal_data_meta');
 	}
 
 	/**
@@ -679,22 +678,22 @@ class Hooks {
 	}
 
 	/**
-	 * Remove privacy order data props values
+	 * Remove privacy order data meta
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.2
 	 * @access public
 	 * @static
 	 */
-	public static function privacy_remove_order_personal_data($order) {
+	public static function privacy_remove_order_personal_data_meta($meta) {
 		$registered_variations = Helpers::get_registered_fields_variations(array(
 			'target' => array('billing', 'shipping', 'order')
 		));
 
 		foreach($registered_variations as $field_slug => $field) {
-			if($prop === $field_slug) {
-				delete_post_meta($order->get_id(), '_' . $field_slug);
-			}
+			$meta['_' . $field_slug] = 'text';
 		}
+
+		return $meta;
 	}
 }
 
