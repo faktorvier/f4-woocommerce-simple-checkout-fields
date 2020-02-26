@@ -5,7 +5,7 @@ Tags: woocommerce, checkout, fields, shop, ecommerce, order, field, text, textar
 Requires at least: 4.4.0
 Tested up to: 5.3
 Requires PHP: 7.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,9 @@ The register_field method provides a lot of arguments to customize your fields. 
 5. Fields in edit address form
 
 == Changelog ==
+
+= 1.0.2 =
+* Fix privacy export and erase
 
 = 1.0.1 =
 * Add donation link
