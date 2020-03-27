@@ -4,7 +4,7 @@
 Plugin Name: F4 Simple Checkout Fields for WooCommerce
 Plugin URI: https://github.com/faktorvier/f4-woocommerce-simple-checkout-fields
 Description: Adds custom fields to the WooCommerce checkout and billing/shipping address.
-Version: 1.0.2
+Version: 1.0.3
 Author: FAKTOR VIER
 Author URI: https://www.faktorvier.ch
 License: GPLv2
@@ -12,7 +12,7 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: f4-wc-simple-checkout-fields
 Domain Path: /Core/Lang
 WC requires at least: 3.0
-WC tested up to: 3.8.0
+WC tested up to: 4.0
 
 This plugin is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
