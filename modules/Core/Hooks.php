@@ -74,8 +74,7 @@ class Hooks {
 	 * @static
 	 */
 	public static function load_textdomain() {
-		$locale = apply_filters('plugin_locale', get_locale(), 'f4-wc-simple-checkout-fields');
-		load_plugin_textdomain('f4-wc-simple-checkout-fields', false, plugin_basename(F4_WCSCF_PATH . 'Core/Lang') . '/');
+		load_plugin_textdomain('f4-woocommerce-simple-checkout-fields', false, plugin_basename(F4_WCSCF_PATH . 'languages') . '/');
 	}
 
 	/**
