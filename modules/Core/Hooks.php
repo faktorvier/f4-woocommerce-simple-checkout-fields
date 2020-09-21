@@ -49,6 +49,8 @@ class Hooks {
 		add_filter('woocommerce_order_formatted_shipping_address', __NAMESPACE__ . '\\Hooks::add_fields_to_formatted_address', 50, 2);
 		add_filter('woocommerce_localisation_address_formats', __NAMESPACE__ . '\\Hooks::append_fields_to_localisation_address_formats', 50);
 		add_filter('woocommerce_formatted_address_replacements', __NAMESPACE__ . '\\Hooks::replace_fields_in_formatted_address', 50, 2);
+		add_action('woocommerce_after_checkout_validation', __NAMESPACE__ . '\\Hooks::set_guest_checkout_session_props');
+		add_filter('woocommerce_checkout_get_value', __NAMESPACE__ . '\\Hooks::get_guest_checkout_field_values', 10, 2);
 
 		// Backend
 		add_filter('woocommerce_customer_meta_fields', __NAMESPACE__ . '\\Hooks::add_customer_meta_fields');
@@ -342,6 +344,52 @@ class Hooks {
 		}
 
 		return $replace;
+	}
+
+	/**
+	 * Set checkout session props for guests
+	 *
+	 * @since 1.0.6
+	 * @access public
+	 * @static
+	 */
+	public static function set_guest_checkout_session_props($data) {
+		if(is_user_logged_in()) {
+			return;
+		}
+
+		$registered_variations = Helpers::get_registered_fields_variations(array(
+			'show_in_order_form' => true
+		));
+
+		foreach($registered_variations as $field_slug => $field) {
+			if(isset($data[$field_slug])) {
+				WC()->session->set($field_slug, wc_clean(wp_unslash($data[$field_slug])));
+			}
+		}
+	}
+
+	/**
+	 * Get checkout field values for guests
+	 *
+	 * @since 1.0.6
+	 * @access public
+	 * @static
+	 */
+	public static function get_guest_checkout_field_values($value, $input) {
+		if(!is_null($value) || is_user_logged_in()) {
+			return $value;
+		}
+
+		$registered_variations = Helpers::get_registered_fields_variations(array(
+			'show_in_order_form' => true
+		));
+
+		if(!in_array($input, array_keys($registered_variations))) {
+			return $value;
+		}
+
+		return WC()->session->get($input);
 	}
 
 	/**
