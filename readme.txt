@@ -134,6 +134,9 @@ The register_field method provides a lot of arguments to customize your fields. 
 
 == Changelog ==
 
+= 1.0.6 =
+* Save guest checkout fields in session
+
 = 1.0.5 =
 * Support WooCommerce 4.4
 * Support WordPress 5.5
