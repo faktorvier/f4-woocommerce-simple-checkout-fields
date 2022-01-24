@@ -3,9 +3,9 @@ Contributors: faktorvier
 Donate link: https://www.faktorvier.ch/donate/
 Tags: woocommerce, checkout, fields, shop, ecommerce, order, field, text, textarea, password, select
 Requires at least: 5.0
-Tested up to: 5.8
+Tested up to: 5.9
 Requires PHP: 7.0
-Stable tag: 1.0.9
+Stable tag: 1.0.10
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -133,6 +133,9 @@ The register_field method provides a lot of arguments to customize your fields. 
 5. Fields in edit address form
 
 == Changelog ==
+
+= 1.0.10 =
+* Support WordPress 5.9
 
 = 1.0.9 =
 * Support WooCommerce 5.5
