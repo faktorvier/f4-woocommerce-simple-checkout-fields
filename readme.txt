@@ -5,7 +5,7 @@ Tags: woocommerce, checkout, fields, shop, ecommerce, order, field, text, textar
 Requires at least: 5.0
 Tested up to: 6.0
 Requires PHP: 7.0
-Stable tag: 1.0.11
+Stable tag: 1.0.12
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,14 +13,11 @@ Adds custom fields to the WooCommerce checkout.
 
 == Description ==
 
-With F4 Simple Checkout Fields for WooCommerce you can simply add new fields to the WooCommerce checkout. There is no UI to manage the fields,
-they only can be added with a simple PHP method. That ensures that the plugin is lightweight and easy to handle, even though you need simple
-PHP knowledge and access to the file system to add the code (preferred your WordPress theme).
+With [F4 Simple Checkout Fields for WooCommerce](https://www.f4dev.ch) you can simply add new fields to the WooCommerce checkout. There is no UI to manage the fields, they only can be added with a simple PHP method. That ensures that the plugin is lightweight and easy to handle, even though you need simple PHP knowledge and access to the file system to add the code (preferred your WordPress theme).
 
 = Usage =
 
-If you first install this plugin, it will do nothing. But it provides a method to add as many custom fields to your checkout as you need. Here's a sample
-how you could add a simple text field to the billing and shipping address:
+If you first install this plugin, it will do nothing. But it provides a method to add as many custom fields to your checkout as you need. Here's a sample how you could add a simple text field to the billing and shipping address:
 
 	add_action('init', function() {
 		F4\WCSCF\Core\Helpers::register_field(array(
@@ -32,8 +29,7 @@ how you could add a simple text field to the billing and shipping address:
 
 == Arguments ==
 
-The register_field method provides a lot of arguments to customize your fields. Some of the arguments are identically to
-[the officiel WooCommerce arguments](https://docs.woocommerce.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/):
+The register_field method provides a lot of arguments to customize your fields. Some of the arguments are identically to [the officiel WooCommerce arguments](https://docs.woocommerce.com/document/tutorial-customising-checkout-fields-using-actions-and-filters/):
 
 	F4\WCSCF\Core\Helpers::register_field(array(
 		// (array) Defines where the field should be added
@@ -133,6 +129,10 @@ The register_field method provides a lot of arguments to customize your fields. 
 5. Fields in edit address form
 
 == Changelog ==
+
+= 1.0.12 =
+* Update www.f4dev.ch links
+* Support WooCommerce 6.8
 
 = 1.0.11 =
 * Support WooCommerce 6.5
