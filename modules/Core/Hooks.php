@@ -239,7 +239,7 @@ class Hooks {
 				'F4/WCSCF/formatted_order_address_field_value',
 				Helpers::maybe_get_registered_field_option_label(
 					$field,
-					$order->get_meta($field_slug)
+					$order->get_meta("_{$field_slug}")
 				),
 				$order,
 				$field['name'],
@@ -732,7 +732,7 @@ class Hooks {
 			if($prop === $field_slug) {
 				$value = Helpers::maybe_get_registered_field_option_label(
 					$field,
-					$order->get_meta($field_slug)
+					$order->get_meta("_{$field_slug}")
 				);
 			}
 		}
